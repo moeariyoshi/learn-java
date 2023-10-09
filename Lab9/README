@@ -1,0 +1,16 @@
+I have adhered to the Honor Code in this assignment. 
+Moe Ariyoshi
+Spring 2023
+
+
+MarkovModel 
+- order (k)
+- states (MyHashMap<prefix, state))
+
+state 
+- count
+- transitions (MyHashMap<suffix, count>)
+
+Cannot retrieve the first input in the TextGenerator!!
+
+Resumbission for missing JavaDoc. 

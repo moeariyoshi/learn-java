@@ -1,0 +1,13 @@
+README
+
+I moved the warmup package into the same src folder that the lab3 was in. 
+I don't know if I was supposed to do that 
+but the test program don't seem to be working anymore with the same code. 
+
+Grade: 46/50
+Comments: 
+minus points for the out of bounds(-2) and set(-2) codes in the myarraylisttest. 
+
+UDPATE:
+
+I had forgotten to use assertThrows so I fixed that. 

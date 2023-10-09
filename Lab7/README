@@ -1,0 +1,51 @@
+I have adhered to the Honor Code in this assignment. 
+
+Tree 1 
+A: -1 - (-1) = 0
+B: 0 - (-1) = 1
+H: 1 - (-1) = 2   
+UNBALANCED!
+
+Tree 2
+A: 0 
+B: 0 - (-1) = 1
+H: 1 - 0 = 1
+M: 0
+BALANCED!
+
+Tree 3
+A: 0
+B: 0 
+C: 0
+H: 1 - 0 = 1
+M: 0
+BALANCED!
+
+Tree 4
+A: 0
+B: 0
+C: 0
+H: 1 - (-1) = 2 
+UNBALANCED!
+
+ALGORITHMIC SOLUTION - inserting 80 
+
+	30
+	/\
+ 15    45
+ /\    /\
+5 20 35 75   <- left rotation at node 60
+		/\
+	   60 80 
+
+
+Notes:
+
+this.compareTo(that)
+returns:
+a negative if this < that
+0 if this == that
+a positive if this > that
+
+Question: Graders, I would appreciate it if you could answer this. Thank you!
+- How does restructure know the first node that is unbalanced from the bottom? 

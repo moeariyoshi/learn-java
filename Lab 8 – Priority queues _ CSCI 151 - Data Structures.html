@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://rjhoyle.github.io/cs151-spring2023/content/lab8/part2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lab 8 – Priority queues | CSCI 151 - Data Structures</title>
+<meta name="generator" content="Jekyll v3.9.3">
+<meta property="og:title" content="Lab 8 – Priority queues">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Course syllabus for Data Structures">
+<meta property="og:description" content="Course syllabus for Data Structures">
+<link rel="canonical" href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/part2.html">
+<meta property="og:url" content="https://rjhoyle.github.io/cs151-spring2023/content/lab8/part2.html">
+<meta property="og:site_name" content="CSCI 151 - Data Structures">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Lab 8 – Priority queues">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Course syllabus for Data Structures","headline":"Lab 8 – Priority queues","url":"https://rjhoyle.github.io/cs151-spring2023/content/lab8/part2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Lab 8 – Priority queues _ CSCI 151 - Data Structures_files/main.css"><link type="application/atom+xml" rel="alternate" href="https://rjhoyle.github.io/cs151-spring2023/feed.xml" title="CSCI 151 - Data Structures"></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="https://rjhoyle.github.io/cs151-spring2023/">CSCI 151 - Data Structures</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="https://rjhoyle.github.io/cs151-spring2023/calendar/">Calendar</a><a class="page-link" href="https://rjhoyle.github.io/cs151-spring2023/policies/">Policies</a><a class="page-link" href="https://rjhoyle.github.io/cs151-spring2023/resources/">Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Lab 8 – Priority queues</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="lab-8--priority-queues">Lab 8 – Priority queues</h1>
+
+<ul>
+  <li><a href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/index.html">Lab 8 Home</a></li>
+  <li><a href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/warmup.html">Warmup</a></li>
+  <li><a href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/part1.html">Part 1</a></li>
+  <li>Part 2</li>
+  <li><a href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/submission.html">Submission</a></li>
+</ul>
+
+<h2 id="part-2--process-scheduling">Part 2 – Process scheduling</h2>
+
+<p>Priority queues are commonly used to schedule tasks in real time: as a task
+becomes available, you add it to the priority queue, and then when you have
+resources available, you run the task at the top of the queue. We are going
+to use your priority queue to simulate an operating system scheduler picking
+which program to run on your CPU - however, this same process is also used to
+schedule things like which patients to attend to in the ER.</p>
+
+<p>We are providing you with three Java classes: <code class="language-plaintext highlighter-rouge">Task</code>, <code class="language-plaintext highlighter-rouge">Scheduler</code>, and
+<code class="language-plaintext highlighter-rouge">AvailableComparator</code>. <code class="language-plaintext highlighter-rouge">Task</code> represents the programs you are scheduling,
+Scheduler represents your OS scheduler, and <code class="language-plaintext highlighter-rouge">AvailableComparator</code> is an
+example of a <code class="language-plaintext highlighter-rouge">Comparator</code>. As you can see by looking at <code class="language-plaintext highlighter-rouge">Task.java</code>, <code class="language-plaintext highlighter-rouge">Task</code>
+is an extremely simple class that just holds information about programs. It
+contains the following variables:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>    
+<span class="kd">public</span> <span class="kt">int</span> <span class="n">priority</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="n">availableTime</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="n">length</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="n">deadline</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>You will be implementing a variety of OS scheduling algorithms by creating
+comparators that compare two tasks on each of these variables. We have
+already implemented AvailableComparator.java, which sorts jobs by the time
+at which they become available to be scheduled; this is equivalent to the
+<a href="https://www.guru99.com/fcfs-scheduling.html">First Come First Serve scheduling algorithm</a>.
+You will implement the following:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">DeadlineComparator.java</code> - The job with the earliest (lowest) deadline
+should be scheduled first. This is equivalent to the <a href="https://en.wikipedia.org/wiki/Earliest_deadline_first_scheduling">Earliest Deadline
+First scheduling
+algorithm</a></li>
+  <li><code class="language-plaintext highlighter-rouge">LengthComparator.java</code> - The job with the shortest length should be
+scheduled first. This is equivalent to the <a href="https://en.wikipedia.org/wiki/Shortest_job_next">Shortest Job First Scheduling
+algorithm</a></li>
+  <li><code class="language-plaintext highlighter-rouge">NameComparator.java</code> - The job whose name is closest to the beginning of the
+alphabet should be scheduled first. This algorithm is not used in practice.</li>
+  <li><code class="language-plaintext highlighter-rouge">PriorityComparator.java</code> - The job with the highest priority should be
+scheduled first. This is equivalent to the <a href="https://www.guru99.com/priority-scheduling-program.html">Priority scheduling
+algorithm</a></li>
+  <li><code class="language-plaintext highlighter-rouge">MyComparator.java</code> - You get to design this one! Your comparator should
+combine job priority and either length or deadline (or both) in a way that
+favors high priority jobs but also tries to minimize the amount of time past
+deadline.  (In order to run MyComparator, you will have to uncomment the appropriate line in Scheduler.java - we commented this line out so the code would compile before you created the MyComparator class.)</li>
+</ul>
+
+<p>Once you have implemented a <code class="language-plaintext highlighter-rouge">Comparator</code>, you will be able to test it out using
+the <code class="language-plaintext highlighter-rouge">Scheduler</code> class, which simulates an OS scheduler. <code class="language-plaintext highlighter-rouge">Scheduler</code> takes two
+command line arguments: a text file of jobs, and a string indicating which
+comparator to run. The strings it expects are <code class="language-plaintext highlighter-rouge">available</code>, <code class="language-plaintext highlighter-rouge">deadline</code>,
+<code class="language-plaintext highlighter-rouge">length</code>, <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">priority</code>, and <code class="language-plaintext highlighter-rouge">mine</code>.</p>
+
+<p>The jobs textfiles contain entries that look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terry-furor 4 0 48 140
+ample-roads 1 38 40 192
+mixes-tones 8 53 33 135
+samba-inked 4 100 87 296
+</code></pre></div></div>
+
+<p>Each entry consists of the job name, the job’s priority, the time at which the job becomes available, the length of the job, and the deadline by which the job should be run.  So the first entry tells us that the job <code class="language-plaintext highlighter-rouge">terry-furor</code> has priority 4, arrives at the scheduler at millisecond 0, takes 48 milliseconds to run, and should be run before millisecond 140.</p>
+
+<p>Tasks are added to the scheduler’s priority heap at the millisecond they become available to schedule.  This means that each millisecond, the scheduler can only schedule the jobs with an available time at or before the current millisecond.  Because of this, jobs will not be completely sorted by your comparator: rather, the number of jobs available at a specific millisecond will be sorted by the comparator, and the best job available at that time will be chosen to run.</p>
+
+<p>The results of running a variety of scheduling algorithms on <code class="language-plaintext highlighter-rouge">jobs10.txt</code> are
+below. The number before the colon is the current timestep.</p>
+
+<h3 id="scheduling-jobs-by-length">Scheduling jobs by Length</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0: running terry-furor priority 4 availability 0 length 48 deadline 140 0 other jobs in queue.
+50: running ample-roads priority 1 availability 38 length 40 deadline 192 0 other jobs in queue.
+90: running mixes-tones priority 8 availability 53 length 33 deadline 135 0 other jobs in queue.
+130: running fetch-strum priority 2 availability 130 length 75 deadline 318 1 other jobs in queue.
+210: running snare-ideal priority 8 availability 192 length 18 deadline 358 3 other jobs in queue.
+230: running roses-octet priority 5 availability 141 length 52 deadline 365 2 other jobs in queue.
+290: running mural-savor priority 4 availability 250 length 36 deadline 313 3 other jobs in queue.
+330: running aging-sated priority 2 availability 239 length 75 deadline 436 2 other jobs in queue.
+410: running crude-maybe priority 9 availability 172 length 78 deadline 345 1 other jobs in queue.
+490: running samba-inked priority 4 availability 100 length 87 deadline 296 0 other jobs in queue.
+All jobs have been run. 2 deadlines were missed, by a total of 156 milliseconds. There were 5 priority inversions.
+</code></pre></div></div>
+
+<p>As you can see, at milliseconds 0 through 90 there is only one job available to run at a time, so they are run in order of availability, not length.  After millisecond 130, multiple jobs are available, so the job currently in the queue with the shortest length is picked to run.  For example, <code class="language-plaintext highlighter-rouge">samba-inked</code> is available to run at millisecond 100, but doesn’t run until millisecond 490 because it has the longest length.</p>
+
+<h3 id="scheduling-jobs-by-deadline">Scheduling jobs by Deadline</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0: running terry-furor priority 4 availability 0 length 48 deadline 140 0 other jobs in queue.
+50: running ample-roads priority 1 availability 38 length 40 deadline 192 0 other jobs in queue.
+90: running mixes-tones priority 8 availability 53 length 33 deadline 135 0 other jobs in queue.
+130: running samba-inked priority 4 availability 100 length 87 deadline 296 1 other jobs in queue.
+220: running fetch-strum priority 2 availability 130 length 75 deadline 318 3 other jobs in queue.
+300: running mural-savor priority 4 availability 250 length 36 deadline 313 4 other jobs in queue.
+340: running crude-maybe priority 9 availability 172 length 78 deadline 345 3 other jobs in queue.
+420: running snare-ideal priority 8 availability 192 length 18 deadline 358 2 other jobs in queue.
+440: running roses-octet priority 5 availability 141 length 52 deadline 365 1 other jobs in queue.
+500: running aging-sated priority 2 availability 239 length 75 deadline 436 0 other jobs in queue.
+All jobs have been run. 4 deadlines were missed, by a total of 303 milliseconds. There were 2 priority inversions.
+</code></pre></div></div>
+
+<h3 id="scheduling-jobs-by-priority">Scheduling jobs by Priority</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0: running terry-furor priority 4 availability 0 length 48 deadline 140 0 other jobs in queue.
+50: running ample-roads priority 1 availability 38 length 40 deadline 192 0 other jobs in queue.
+90: running mixes-tones priority 8 availability 53 length 33 deadline 135 0 other jobs in queue.
+130: running samba-inked priority 4 availability 100 length 87 deadline 296 1 other jobs in queue.
+220: running crude-maybe priority 9 availability 172 length 78 deadline 345 3 other jobs in queue.
+300: running snare-ideal priority 8 availability 192 length 18 deadline 358 4 other jobs in queue.
+320: running roses-octet priority 5 availability 141 length 52 deadline 365 3 other jobs in queue.
+380: running mural-savor priority 4 availability 250 length 36 deadline 313 2 other jobs in queue.
+420: running fetch-strum priority 2 availability 130 length 75 deadline 318 1 other jobs in queue.
+500: running aging-sated priority 2 availability 239 length 75 deadline 436 0 other jobs in queue.
+All jobs have been run. 3 deadlines were missed, by a total of 287 milliseconds. There were 0 priority inversions.
+</code></pre></div></div>
+
+<p><a href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/part1.html">« Previous</a>   <a href="https://rjhoyle.github.io/cs151-spring2023/content/lab8/submission.html">Next »</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cs151-spring2023/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">CSCI 151 - Data Structures</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">CSCI 151 - Data Structures</li><li><a class="u-email" href="mailto:roberto.hoyle@oberlin.edu">roberto.hoyle@oberlin.edu</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rjhoyle"><svg class="svg-icon"><use xlink:href="/cs151-spring2023/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rjhoyle</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Course syllabus for Data Structures</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+</body></html>

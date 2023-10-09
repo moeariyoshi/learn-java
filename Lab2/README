@@ -1,0 +1,23 @@
+README
+
+I have adhered to the Honor Code in this assignment.
+
+Notes:
+I have to remember to close my scanners!
+
+Results: 
+
+ArrayList!
+The minimum of test time is: 737
+The minimum of test time is: 848
+The average of test time is: 711
+TreeSet!
+The minimum of test time is: 6
+The minimum of test time is: 34
+The average of test time is: 6
+
+
+Grade: 47/50
+Comments: 
+CollectionsTest.java
+Your final results for the array were wrong for both data structures. -3 

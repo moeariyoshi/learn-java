@@ -1,0 +1,78 @@
+Moe Ariyoshi
+
+I have adhered to the Honor Code in this assignment. 
+
+Did the JavaDoc for BinaryTree.java class.
+
+Discussed lab directions with Simon Hunsinger. 
+
+In TreeLoader.java:
+
+Q. Why does the code not work without casting the tag strings into integers
+and do if (leftTag == "1")?
+
+In BinaryTreeTest.java:
+
+Q. ArrayList<Integer> expected = new ArrayList<Integer>();
+        
+        expected.add(3);
+        expected.add(5);
+        expected.add(7);
+        
+        is there a better way to compare the list to the expected list? 
+        
+        
+        
+        
+        
+Previous Submission Grade:
+
+Submission
+
+ 10/10
+
+TreeLoader
+
+ 4/4
+
+EmptyTree
+
+ -0.5 mirrorImage needs to return a new (Empty) tree, not "this"
+
+ -0.5 pare needs to return a new (Empty) tree, not "this"
+
+ -0.5 cutLeaves needs to return a new (Empty) tree, not "this"
+
+ -0.5 diameter should return -1 not 0, because each connection between a node adds a 1, a tree with just a single node would have a diameter of 0,
+
+ so if the tree is empty, the diameter is -1
+
+ 4.5/6.5
+
+ConsTree
+
+ -2 cutLeaves, does not cut leaves, cuts all but the root, shouldn't just return new empty trees, you should only return EmptyTree(s) when both the 
+
+ left and right children are empty
+
+ -1 levelCount this only gives an exception, does not print the number of nodes at each level
+
+ -0.5 postOrderElements preOrderElements is used here when it should be postOrderElements
+
+ -0.5 inOrderElements preOrderElements is used here when it should be postOrderElements
+
+ 11.5/15.5
+
+BinaryTreeTest
+
+ The tests for weightBalanceFactor is good, but you might want to test a tree that doesn't have a weight balance factor of 0
+
+Comments
+
+ No comments
+
+ 0/3
+ 
+ Resumbitted for the reasons above. 
+
+

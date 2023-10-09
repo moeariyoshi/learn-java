@@ -1,0 +1,67 @@
+README
+
+Partner: Kseniia Borovkova
+
+Talia & Rory (Lab Help) 
+
+Warmup: 
+Ben Rappoport 
+Alec Sabol-Pulling 
+
+Discussed Lab Directions
+Simon Huntsinger
+
+I have adhered to the Honor Code in this assignment. 
+
+for(node = this.head; node.next !== null; node = node.next){
+//empty code 
+}
+
+doesn't make sense in removeLast() and addLast()
+
+Use a while loop instead! 
+
+public void addLast(E element) {
+        if (this.isEmpty()) {
+            this.addFirst(element);
+        } else {
+//            Node node = this.head;
+//            while (node.next != null) {
+//                node = node.next;
+//            }
+            Node newNode = new Node(element, null);
+            this.tail.next = newNode;
+            this.tail = newNode; 					//Which is better practice? this.tail = this.tail.next?
+        }
+}
+    
+WARMUP 4 QUESTIONS: 
+
+If we only ever add elements to the beginning of our list and remove them from the beginning of the list, 
+which abstract data type have we just implemented? Give it a shot: STACKS 
+
+If we only ever add elements to the end of our list and remove them from the beginning of the list, 
+which abstract data type have we just implemented? Give this a shot: QUEUE
+
+
+
+public E removeFirst() {
+        if (this.isEmpty()) {
+            throw new NoSuchElementException();
+        } 
+        
+//Should this be in an else block? 
+        Node removed = this.head;
+        this.head = this.head.next;
+        if (this.head == null) {
+            this.tail = null;
+        };
+        this.size--;
+        return removed.data;   
+    }
+
+
+When I was coding the getPath()
+The debugger helped me realize that I was going between 
+
+

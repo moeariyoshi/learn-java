@@ -1,0 +1,45 @@
+Name: Moe Ariyoshi
+Honor statement: I have adhered to the Honor Code in this assignment
+
+File                      Words    Unique Words    ArrayList Time    Iterator Time    Indexing Time
+Prufrock.txt              1084             501             45 ms            28 ms            25 ms
+IHaveADream.txt           1589             630    
+EveOfStAgnes.txt          2902            1566
+KentuckyDerby.txt         7277            2605
+MagnaCarta.txt           17473            2818
+Hamlet.txt               32006            7718
+
+
+
+File	    		Words			Unique Words	ArrayList (ms)	Iterator (ms)	Indexing (ms)
+Prufrock			1084			501	            17	            51				44
+IHaveADream			1589			630				20				125				103
+EveOfStAgnes		2902			1566			26				2116			2059
+KentuckyDerby		7277			2605			49				13685			13661
+MagnaCarta			17473			2818			92				32664			22543
+Hamlet				32006			7718			292				338663			590742
+
+1. How do the growth rates for ArrayList and Iterator compare?
+
+While the growth rate for Iterator was exponential, Array List, remained linear. 
+
+2. How do the growth rates for Iterator and Indexing compare?
+
+Iterator and Indexing both grow in an exponential rate. 
+Indexing grows at a bigger rate than Iterator. 
+
+3. If you were tasked with storing data in a list and you needed to
+   sequentially examine elements in the list, which approach would you take
+   and why?
+   
+   Although it will take more time, I will choose the Iterator method because it can make sure the data is examined in the right sequence. 
+   
+   
+   
+   Notes: 
+   It's important that I don't increment the size before I add the Nodes because I can't add special cases when size == 0
+   
+  
+  
+  People I talked about the lab with:
+  Ehsan

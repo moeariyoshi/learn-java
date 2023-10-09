@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"trees","l":"BinaryTree"},{"p":"trees","l":"ConsTree"},{"p":"trees","l":"EmptyTree"},{"p":"trees","l":"TreeApp"},{"p":"trees","l":"TreeAppFrame"},{"p":"trees","l":"TreeDisplay"},{"p":"trees","l":"TreeLoader"}];updateSearchResults();

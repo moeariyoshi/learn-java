@@ -1,0 +1,43 @@
+Moe Ariyoshi
+I have adhered to the honor code in this assignment. 
+
+Any known problems or assumptions made in your classes or program:
+The comparators have to implement Comparator<Task>
+
+Warmup:
+
+At what index will you store the root of the tree?
+0
+
+At what index is the parent of the node at index i?
+(i -1)//2
+
+At what index is the left child of the node at index i?
+2*i+1
+
+At what index is the right child of the node at index i?
+2*i+2
+
+
+     
+        0
+      /   \
+     1     2 
+    / \   / \
+   3   4 5   6 
+  / \
+ 7   8   .....
+ 
+ Node   Parent    Children
+ at i   index     index
+ ------------------------------
+ 0       null       1,2
+ 1		  0         3,4
+ 2        0         5,6
+ 3        1         7,8
+ 4        1         9,10
+ 5        2         11,12
+ 6        2         13,14
+ -------------------------------
+ i     (i-1)//2    2i+1, 2i+2
+ 
